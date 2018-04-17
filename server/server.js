@@ -28,5 +28,5 @@ app.use('/topics', topicRouter);
 // 启动server
 // =============================================================================
 // 开始监听端口
-app.listen(port);
+app.listen(port,'0.0.0.0');
 console.log('Magic happens on port ' + port);

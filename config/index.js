@@ -9,7 +9,6 @@ module.exports = {
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {},
 
     // Various Dev Server settings
     host: 'localhost', // can be overwritten by process.env.HOST
@@ -17,15 +16,15 @@ module.exports = {
     productionSourceMap: true,
     productionGzip: false,
     productionGzipExtensions: ['js', 'css'],
-    //  proxyTable: {
-    //     '/login':{
-    //         target:'http://www.bishijie.com/home',
-    //         changeOrigin:true,
-    //         pathRewrite:{
-    //             '^/login':''
-    //         }
-    //     }
-    // },
+     proxyTable: {
+        '/api':{
+            target:'http://localhost:8080',
+            changeOrigin:true,
+            pathRewrite:{
+                '^/api':''
+            }
+        }
+    },
     /**
      * Source Maps
      */

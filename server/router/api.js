@@ -31,8 +31,8 @@ router.get('/list', function (req, res) {
             res.json({status: '1', msg: err.message})
         } else {
             res.json({
-                status: '0',
-                msg: '',
+                status: '200',
+                msg: 'success',
                 result: {
                     count: doc.length,
                     list: doc,
