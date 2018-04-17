@@ -2,7 +2,6 @@
 
 > 高仿ReadHub，结合vue，node，mongodb，express
 
-
 ## Build Setup
 
 ``` bash
