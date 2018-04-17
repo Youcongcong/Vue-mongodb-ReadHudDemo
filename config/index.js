@@ -17,7 +17,15 @@ module.exports = {
     productionSourceMap: true,
     productionGzip: false,
     productionGzipExtensions: ['js', 'css'],
-    
+    //  proxyTable: {
+    //     '/login':{
+    //         target:'http://www.bishijie.com/home',
+    //         changeOrigin:true,
+    //         pathRewrite:{
+    //             '^/login':''
+    //         }
+    //     }
+    // },
     /**
      * Source Maps
      */

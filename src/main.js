@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import App from './App.vue';
 import router from './router';
-
+import './permission'
 // 开启debug模式
 Vue.config.debug = true;
 Vue.config.productionTip = false
