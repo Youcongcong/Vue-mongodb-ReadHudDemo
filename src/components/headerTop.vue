@@ -1,7 +1,7 @@
 <template>
     <header class="header___1vcPj">
         <div class="content___2NWFu">
-            <a class="logo___2xdXa" href="/"><img src="https://cdn.readhub.me/static/assets/png/readhub_logo@2x.c5c683e7.png" alt="logo" srcset="https://cdn.readhub.me/static/assets/png/readhub_logo@2x.c5c683e7.png 1x, https://cdn.readhub.me/static/assets/png/readhub_logo@2x.c5c683e7.png 2x"></a>
+            <a class="logo___2xdXa" href="/"><img src="../assets/readhub_logo@2x.c5c683e7.png"></a>
             <nav class="nc_clearfix">
                 <a  :class="{active:active==index}" v-for="(item,index) in title" @click="toggle(index ,item)" :key="item.index">{{item.name}}
                 </a>
@@ -33,11 +33,11 @@ export default {
             },
             {
                 name:'开发者资讯',
-                router:'/',
+                router:'/tech',
                 isActive:false
             },{
                 name:'区块链快讯',
-                router:'/',
+                router:'/blockchain',
                 isActive:false
             }
         ]
@@ -58,7 +58,7 @@ export default {
         height: 80px;
         background-color: #fff;
         border-bottom: 1px solid #dcdcdc;
-        position: fixed;
+        // position: fixed;
         z-index: 2;
         top: 0;
         left: 0;
@@ -107,7 +107,7 @@ export default {
                 position: relative;
             }
             .labLogo___3Dum4.labLogout___3fPRt:before {
-                background-image: url(https://cdn.readhub.me/static/assets/png/sprite.1e7e5975.png);
+                background-image: url('../assets/sprite.1e7e5975.png');
                 background-position: -449px -126px;
                 width: 50px;
                 height: 50px;

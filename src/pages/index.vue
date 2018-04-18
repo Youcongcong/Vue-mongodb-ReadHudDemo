@@ -33,6 +33,11 @@
     } 
 </script>
 <style lang="less">
+    .layout___30l4Y{
+        height: 100%;
+        display: flex;
+        flex-flow: column;
+    }
     html{
         color: #333;
         background-color: #f4f5f5;
@@ -61,16 +66,19 @@
 
     }
     .main___34Tlm {
-        width: 100%;
+        background: #fff;
         width: 960px;
         position: relative;
-        margin: 38px auto 0;
-        min-height: 900px;
+        margin: 0 auto ;
         display: flex;
+        flex: 1;
+        overflow: hidden;
         z-index: 1;
         justify-content: space-between;
         .content___1qExG{
             max-width: 960px;
+            background: #fff;
+            
             width: 100%;
         }
     }

@@ -6,6 +6,8 @@ mongoose.connect(url, {useMongoClient: true});
 
 
 var topicRouter = require('./router/api')
+var newsRouter = require('./router/news')
+
 // 加载express
 var express = require('express'); // call express
 var router = new express()
@@ -23,6 +25,8 @@ var port = process.env.PORT || 8080; // set our port
 
 // 注册路由 路由会加上“／topics”前缀
 app.use('/topics', topicRouter);
+app.use('/', newsRouter);
+
 
 
 // 启动server

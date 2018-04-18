@@ -9,5 +9,12 @@ export default {
   name: 'app'
 }
 </script>
+<style>
+html,body,#app{
+  height: 100%;
+  background: #fff
+}
+</style>
+
 
 

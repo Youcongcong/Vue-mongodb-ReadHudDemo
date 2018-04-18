@@ -1,25 +1,76 @@
 <template>
-    <div id="itemlist">
+<div ref="content" id="scroll">
+    <div id="itemlist" v-for="(item,index) in listData" :key="index">
         <div class="timelineItem___1T6m9">
-            <h2 class="enableVisited"><a class="" href="http://www.bishijie.com/home/newsflashpc/detail?id=25088" target="_blank">Ripple 宣布以价值 250 万美元 XRP 投资基金</a></h2>
+            <h2 class="enableVisited"><a class="" :href="'http://www.bishijie.com/home/newsflashpc/detail?id='+item.id" target="_blank">{{item.title}}</a></h2>
             <div class="summary___2wW8Q">
                 <div class="bp-pure___3xB_W">
                     <div class="bp-beauty-line___3EG0Z clamp3" style="letter-spacing: 0.175267px;">
-                        Blockchain Capital Parallel 是第一个接受数字资产的基金，并完全专注于开发区块链空间 ... 该基金将用来投资于具有企业家精神的区块链公司，同时也为 XRP 分布账和账本间协议的新应用提供机会 ... 据《币世界》行情显示，XRP 目前全球均价...
+                        {{item.summary}}
                     </div>
     
                 </div>
             </div>
-            <div class="meta___1ARPK"><span>币世界<i class="split___2Hoin"></i>16 分钟前<i class="split___2Hoin"></i></span></div>
+            <div class="meta___1ARPK"><span>{{item.siteName}} <span v-if="item.authorName">/ {{item.authorName}}</span><i class="split___2Hoin"></i>{{new Date(item.publishDate).getTime() | formatTime}}<i class="split___2Hoin"></i></span></div>
         </div>
+    </div>
     </div>
 </template>
 
 <script>
+    import bindScrollAction from '../utils/bindScrollAction';
+
+    export default {
+        data() {
+            return {
+                page: 1,
+                pageSize: 10,
+                listData: [],
+                load: true,
+            }
+        },
+        methods: {
+            getList(){
+                var that = this;
+                if(!that.load) return false;
+                this.http.get('/api/news/list?pageSize=10&page='+that.page).then(function(data) {
     
+                    let datas = data.data.result.list
+                    //console.log(datas)
+					if(datas.length == 0) {
+						this.load = false;
+						return false;
+					}
+                    that.page += 1;
+                    
+                    
+                    that.listData  = that.listData.concat(datas);
+                })
+                .catch(function(response) {
+                    console.log(response);
+                });
+            }
+        },
+        created() {
+			// this.getList();
+		},
+        mounted() {
+            this.getList();
+            bindScrollAction(this.$refs.content, this.getList)
+
+        }
+    }
 </script>
 
 <style lang="less" scoped>
+#scroll{
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        overflow: auto
+    }
     @media screen and (-webkit-min-device-pixel-ratio: 2) {
         .timelineItem___1T6m9 {
             border-bottom: none !important;
@@ -44,7 +95,6 @@
         padding-top: 0;
     }
     .timelineItem___1T6m9:first-child .enableVisited {
-        padding-top: 0;
     }
     .timelineItem___1T6m9 {
         display: block;

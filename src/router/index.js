@@ -5,6 +5,10 @@ Vue.use(Router)
 import Index from '../pages/index.vue';
 import topic from '../pages/topic.vue'
 import newsOther from '../pages/newsOther.vue'
+import tech from '../pages/tech.vue'
+
+import blockchain from '../pages/blockchain.vue'
+
 
 
 export default new Router({
@@ -19,9 +23,17 @@ export default new Router({
                 component:topic,
               },
               {
+                path: 'tech',
+                component:tech,
+              },
+              {
+                path: 'blockchain',
+                component:blockchain,
+              },
+              {
                 path: 'news',
                 component:newsOther,
-              },
+              }
               
           ]
         }

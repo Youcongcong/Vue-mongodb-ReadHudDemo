@@ -8,7 +8,6 @@ NProgress.configure({showSpinner:false})
 Router.beforeEach((to,from,next)=>{
     NProgress.start()
     next()//
-    console.log(NProgress)    
 
 })
 

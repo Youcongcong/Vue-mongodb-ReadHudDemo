@@ -67,11 +67,10 @@ export function formatTime(publishTime) {
     d_days;
   var timeNow = parseInt(new Date().getTime() / 1000); //转换为服务器当前时间戳
   var d;
-  d = timeNow - publishTime;
+  d = timeNow - publishTime/1000;
   d_days = parseInt(d / 86400);
   d_hours = parseInt(d / 3600);
   d_minutes = parseInt(d / 60);
-  
   if (d_days > 0 && d_days < 4) {
     return d_days + "天前";
   } else if (d_days <= 0 && d_hours > 0) {
@@ -79,11 +78,10 @@ export function formatTime(publishTime) {
   } else if (d_hours <= 0 && d_minutes > 0) {
     return d_minutes + "分钟前";
   } else {
-    var s = new Date(publishTime * 1000);
     var y = new Date(publishTime);
     
     //return s.getFullYear()+"年";s.getFullYear()+"年"
-    return (y.getFullYear()+"年"+s.getMonth() + 1) + "月" + s.getDate() + "日";
+    return y.getFullYear()+"年"+Number(y.getMonth()+1)  + "月" + y.getDate() + "日" +y.getHours() + "时"+y.getMinutes() + "分";
   }
 }
   export function html2Text(val) {
