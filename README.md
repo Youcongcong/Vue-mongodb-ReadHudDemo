@@ -1,30 +1,29 @@
-# vue-youui
+## 项目介绍
 
-> 高仿ReadHub，结合vue，node，mongodb，express
+**高仿ReadHub，项目中整合 vue + node + mongodb + express + axios  + vue-router，一个前端全栈简单Demo**
 
-## Build Setup
+## 完成功能列表
 
-``` bash
-# install dependencies
-npm install
+- [x] 爬虫爬取ReadHub网页数据并且存储到mongo数据库
 
-# serve with hot reload at localhost:8080
-npm run dev
+- [x] 分页接口
 
-# build for production with minification
-npm run build
+- [x] vue全局过滤器
 
-# build for production and view the bundle analyzer report
-npm run build --report
+- [x] ReadHub热门话题
 
-# run unit tests
-npm run unit
+- [x] ReadHub科技动态
 
-# run e2e tests
-npm run e2e
+- [x] ReadHub开发者咨询
 
-# run all tests
-npm test
-```
+- [x] ReadHub区块链快讯
 
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+- [x] 滚动分页加载
+
+## 一、效果图
+
+![](./markdownImg/expressdemo.gif)
+
+看完最终完成的效果图，接下来，开始我们的实战之旅吧 ~
+
+
