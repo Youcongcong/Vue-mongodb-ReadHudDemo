@@ -19,7 +19,9 @@ var saveData = (docs, page) => {
     return new Promise((resolve, reject) => {
         
         connection.collection('topic').insert(docs)
+        console.log('爬取成功')
     })
+    
 }
 var spider = () => {
     console.log(`正在爬取第${i}页，请耐心稍等...`);
@@ -34,8 +36,7 @@ var spider = () => {
             }
             spider();
         }
-    })
-    .catch(e => {
+    }).catch(e => {
         console.log('爬取出错或超时');
         spider();
     })
