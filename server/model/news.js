@@ -13,7 +13,6 @@ var newsSchema = new Schema({
     siteSlug:String,
     language:String,
     authorName:String,
-
 })
 
 
