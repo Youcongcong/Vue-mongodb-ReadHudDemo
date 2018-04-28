@@ -1,6 +1,6 @@
 // server.js BASE SETUP
 // =============================================================================
-var url = 'mongodb://localhost:27017/test' // 连接mongodb的url
+var url = 'mongodb://0.0.0.0:27017/test' // 连接mongodb的url
 var mongoose = require('mongoose'); //加载mongoose模块
 mongoose.connect(url, {useMongoClient: true});
 
