@@ -23,7 +23,7 @@ var saveData = (docs, page) => {
 }
 var spider = () => {
     console.log(`正在爬取第${i}页，请耐心稍等...`);
-    axios.get(`${url}${i}`).then(async res => {
+    axios.get(`${url}${i}`).then( res => {
         if( res.status === 200 ) {
             let data = res.data.data;
             let data1 = res.data.data
