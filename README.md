@@ -1,7 +1,7 @@
 
 
 
-## 项目介绍
+## 项目介绍 http://47.106.131.44/readhub/#/news
 
 **高仿ReadHub，项目中整合 vue + node + mongodb + express + axios  + vue-router，一个前端全栈简单Demo**
 
