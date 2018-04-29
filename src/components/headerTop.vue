@@ -106,6 +106,7 @@ export default {
                 display: inline-block;
                 position: relative;
             }
+            
             .labLogo___3Dum4.labLogout___3fPRt:before {
                 background-image: url('../assets/sprite.1e7e5975.png');
                 background-position: -449px -126px;
