@@ -156,6 +156,118 @@ node api.js
 **这个时候我们通过可视化工具Toad，可以看到表topic的数据**
 ![image](./markdownImg/toad.png)
 
+#### 2、第步部通过express开发接口api
+
+**连接mongo，监听8080端口**
+
+
+```
+// server.js BASE SETUP
+// =============================================================================
+var url = 'mongodb://0.0.0.0:27017/test' // 连接mongodb的url
+var mongoose = require('mongoose'); //加载mongoose模块
+mongoose.connect(url, {useMongoClient: true});
+
+
+var topicRouter = require('./router/api')
+var newsRouter = require('./router/news')
+
+// 加载express
+var express = require('express'); // call express
+var router = new express()
+
+var app = express(); // 获得express定义的app，app对象此时代表整个web应用
+bodyParser = require('body-parser');
+
+// 给app配置bodyParser中间件 通过如下配置再路由种处理request时，可以直接获得post请求的body部分
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.json());
+
+var port = process.env.PORT || 8080; // set our port
+
+// 注册路由 路由会加上“／topics”前缀
+app.use('/topics', topicRouter);
+app.use('/', newsRouter);
+
+// 启动server
+// =============================================================================
+// 开始监听端口
+app.listen(port,'0.0.0.0');
+console.log('Magic happens on port ' + port);
+```
+
+**编写数据模型**
+
+```
+var mongoose = require('mongoose');
+
+var Schema = mongoose.Schema
+
+var newsSchema = new Schema({
+    id:Number,
+    publishDate:Date,
+    summary:String,
+    summaryAuto:String,
+    title:String,
+    url:String,
+    mobileUrl:String,
+    siteSlug:String,
+    language:String,
+    authorName:String,
+})
+//数据库中news 表
+module.exports = mongoose.model('news', newsSchema,'news');
+```
+**接口定义**
+```
+
+var express = require('express')
+var router =express();
+var router = express.Router(); // 获得express router对象
+var mongoose = require('mongoose')
+mongoose.Promise = global.Promise;
+
+// 任何路由的每次request都执行
+router.use(function (req, res, next) {
+    // 打印
+    console.log('Something is happening.');
+    next(); // 在这里会将request交给下一个中间件，如果这个中间件后面没有其他中间件，请求会交给匹配的路由作处理
+});
+
+// 用这个路由来做简单的测试(用get动词访问 http://localhost:8080/api)
+router.get('/', function (req, res) {
+    res.json({message: 'hooray! welcome to our api!'});
+});
+
+var news = require('../model/news');
+
+// 注册我们的路由 ------------------------------- 所有的路由都会加上前缀 /api
+router.get('/news/list', function (req, res) {
+    let page = parseInt(req.param('page'))
+    let pageSize = parseInt(req.param('pageSize'))
+    let skip = (page - 1) * pageSize
+    let params = {};
+    let newsModel = news.find(params).skip(skip).limit(pageSize)
+    newsModel.exec((err, doc) => {
+        if (err) {
+            res.json({status: '1', msg: err.message})
+        } else {
+            res.json({
+                status: '200',
+                msg: 'success',
+                result: {
+                    count: doc.length,
+                    list: doc,
+                    page: page,
+                    pageSize: pageSize
+                }
+            })
+        }
+    })
+});
+
+module.exports = router;
+```
 
 
 
